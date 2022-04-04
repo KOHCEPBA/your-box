@@ -1,5 +1,6 @@
 package com.rudnick.yourbox.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -12,10 +13,10 @@ import java.util.Set;
 public class Storage {
     @Id
     protected String name;
-    @OneToMany(mappedBy = "storage")
+    @OneToMany(mappedBy = "storage", fetch = FetchType.LAZY)
+    @JsonBackReference
     protected Set<Storage> subStorages;
-
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn
     protected Storage storage;
 }
