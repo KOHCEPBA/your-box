@@ -16,7 +16,7 @@ public class StorageController {
     private final StorageService service;
 
     @PostMapping("/{name}")
-    public ResponseEntity<String> newStorage(@PathVariable String name, @RequestBody Storage related) {
+    public ResponseEntity<String> newStorage(@PathVariable String name, @RequestBody(required = false) Storage related) {
         String newStorageId = service.createNewStorage(name, related);
         return ResponseEntity.created(URI.create("/Storage/" + newStorageId)).build();
     }

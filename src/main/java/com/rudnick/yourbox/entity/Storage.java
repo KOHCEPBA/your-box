@@ -12,11 +12,11 @@ import java.util.Set;
 @Data
 public class Storage {
     @Id
-    protected String name;
+    private String name;
     @OneToMany(mappedBy = "storage", fetch = FetchType.LAZY)
     @JsonBackReference
-    protected Set<Storage> subStorages;
+    private Set<Storage> subStorages;
     @ManyToOne
     @JoinColumn
-    protected Storage storage;
+    private Storage storage;
 }
