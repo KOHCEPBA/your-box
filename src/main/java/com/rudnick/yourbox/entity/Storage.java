@@ -1,13 +1,21 @@
 package com.rudnick.yourbox.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
-@Data
 @Entity
+@EqualsAndHashCode
+@Data
 public class Storage {
     @Id
-    private String name;
+    protected String name;
+    @OneToMany(mappedBy = "storage")
+    protected Set<Storage> subStorages;
+
+    @ManyToOne()
+    @JoinColumn
+    protected Storage storage;
 }
